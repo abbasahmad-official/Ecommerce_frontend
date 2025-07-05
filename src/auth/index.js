@@ -55,13 +55,34 @@ import { API } from "../config";
 };
 
 export const isAuthenticated = () => {
-    if (typeof window === "undefined") {
-        return false;
+  if (typeof window === "undefined") return false;
+
+  const jwt = localStorage.getItem("jwt");
+
+  // Catch empty, undefined, or invalid string values
+  if (!jwt || jwt === "undefined" || jwt === "null") {
+    return false;
+  }
+
+  try {
+    const parsedJwt = JSON.parse(jwt);
+
+    // Optional: validate JWT structure
+    if (!parsedJwt.token) {
+      return false;
     }
-    if(localStorage.getItem("jwt")){
-        return JSON.parse(localStorage.getItem("jwt"));
-        
-    } else {
-        return false;
+
+    // Optional: check if expired (example assumes `expiresAt` is a timestamp in ms)
+    if (parsedJwt.expiresAt && Date.now() > parsedJwt.expiresAt) {
+      localStorage.removeItem("jwt"); // auto-clean expired token
+      return false;
     }
-}
+
+    return parsedJwt;
+  } catch (err) {
+    console.error("Failed to parse JWT from localStorage", err);
+    return false;
+  }
+};
+
+
