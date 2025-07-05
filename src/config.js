@@ -1,2 +1,2 @@
 
-export const API = "http://localhost:3000/api"
+export const API = `${import.meta.env.REACT_APP_URL}`
