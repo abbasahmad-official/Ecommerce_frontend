@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem } from "./cartHelpers";
-import "/App.css"
+
 
 const ProductCard = ({ product }) => {
 
