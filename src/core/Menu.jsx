@@ -46,6 +46,7 @@ const Menu = () => {
           <li><Link className="nav-link" style={isActive("/")} to="/" onClick={closeSidebar}>Home</Link></li>
           <li><Link className="nav-link" style={isActive("/shop")} to="/shop" onClick={closeSidebar}>Shop</Link></li>
           <li><Link className="nav-link" style={isActive("/cart")} to="/cart" onClick={closeSidebar}>Cart <sup><small>{menuCount}</small></sup></Link></li>
+            <span className="close-btn mt-5" onClick={closeSidebar}>&times;</span>
 
           {isAuthenticated() && isAuthenticated().user.role === 0 && (
             <li><Link className="nav-link" style={isActive("/user/dashboard")} to="/user/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
