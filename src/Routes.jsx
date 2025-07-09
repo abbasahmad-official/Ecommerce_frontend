@@ -19,6 +19,8 @@ import Orders from "./admin/Order";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // <-- this enables dropdowns, modals, navbar toggle, etc.
 
 
 const AppRoutes = () => {
