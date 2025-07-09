@@ -11,21 +11,26 @@ const ProductCard = ({ product }) => {
   const addToCart = () => {
     console.log("adding to cart")
     console.log(product);
-      addItem(product, ()=> {
-        setRedirect(true);
-      })
+    addItem(product, () => {
+      setRedirect(true);
+    })
   }
 
   const shouldRedirect = (redirect) => {
-    if(redirect){
+    if (redirect) {
       return <Navigate to="/cart" />
     }
   }
 
   return (
-   <div className="card h-100 border-0 rounded-4 overflow-hidden product-hover-effect">
+    <div className="card h-100 border-0 rounded-4 overflow-hidden product-hover-effect">
       {shouldRedirect(redirect)}
-     <Link to={`/product/${product._id}`}> <ShowImage item={product} url="product" /> </Link>
+      <div className="text-center my-2">
+        <Link to={`/product/${product._id}`}>
+          <ShowImage item={product} url="product" />
+        </Link>
+      </div>
+
       <div className="card-body d-flex flex-column justify-content-between">
         <div>
           <h5 className="card-title text-dark">{product.name}</h5>
@@ -41,7 +46,7 @@ const ProductCard = ({ product }) => {
             <Link to={`/product/${product._id}`} className="btn btn-primary btn-sm">
               View Product
             </Link>
-            <button  className="btn btn-outline-secondary btn-sm p-1" onClick={addToCart} >
+            <button className="btn btn-outline-secondary btn-sm p-1" onClick={addToCart} >
               <img
                 src="https://cdn-icons-png.flaticon.com/512/263/263142.png"
                 alt="Add to Cart"
