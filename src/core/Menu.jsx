@@ -4,7 +4,7 @@ import { signout, isAuthenticated } from "../auth";
 import { itemTotal } from "./cartHelpers";
 import { useSelector, useDispatch } from 'react-redux';
 import { setCartMenuValue } from '../redux/slices/cartSlice';
-import './Sidebar.css'; // Make sure to create this file
+import './Sidebar.css';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -29,20 +29,19 @@ const Menu = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark bg-primary px-3">
-        <div className="container-fluid d-flex justify-content-between align-items-center">
-          <Link className="navbar-brand" to="/">MyShop</Link>
+      {/* Custom Navbar */}
+      <div className="custom-navbar bg-primary px-3 py-2 d-flex justify-content-between align-items-center">
+        <Link className="navbar-brand text-white" to="/">MyShop</Link>
 
-          {/* Custom Hamburger */}
-          <div className="hamburger d-md-none" onClick={toggleSidebar}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        {/* Custom Hamburger */}
+        <div className="hamburger d-md-none" onClick={toggleSidebar}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </nav>
+      </div>
 
-      {/* Sidebar and overlay */}
+      {/* Sidebar & Overlay */}
       <div className={`sidebar-overlay ${isSidebarOpen ? "open" : ""}`} onClick={closeSidebar}></div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <ul className="list-unstyled p-3">
