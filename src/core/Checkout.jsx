@@ -69,6 +69,7 @@ const Checkout = ({ products, getTotal }) => {
           <button
             className="btn btn-primary btn-lg mt-3"
             onClick={handlePayment}
+            disabled={!address.trim()}
           >
             Pay with Stripe
           </button>
