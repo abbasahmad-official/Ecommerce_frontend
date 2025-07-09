@@ -3,6 +3,7 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "./apiAdmin";
+import ShowImage from "../core/ShowImage";
 
 const ManageProducts = () => {
 
