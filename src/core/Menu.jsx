@@ -57,8 +57,8 @@ const Menu = () => {
 
           {!isAuthenticated() && (
             <Fragment>
-              <li><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
-              <li><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
+              <li className="mt-2"><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
+              <li className="mt-2"><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
             </Fragment>
           )}
 
