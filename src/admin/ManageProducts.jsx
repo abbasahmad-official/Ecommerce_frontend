@@ -56,6 +56,7 @@ const ManageProducts = () => {
                             <span style={{ flex: 1 }}>{product.name}</span>
 
                             <ShowImage
+                                className="me-4"
                                 item={product}
                                 url="product"
                                 from="list"
