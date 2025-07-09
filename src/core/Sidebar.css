@@ -9,7 +9,6 @@
   z-index: 1050;
   transition: all 0.3s ease;
   overflow-y: auto;
-  padding-top: 60px;
 }
 
 .sidebar.open {
@@ -46,28 +45,4 @@
   height: 3px;
   background: white;
   border-radius: 2px;
-}
-
-/* Stylish links */
-.sidebar .nav-link {
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 12px 10px;
-  color: white;
-  transition: background 0.2s;
-}
-
-.sidebar .nav-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-}
-
-/* Close icon */
-.sidebar .close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: white;
 }
