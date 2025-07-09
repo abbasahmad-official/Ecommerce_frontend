@@ -42,36 +42,42 @@ const ManageProducts = () => {
         >
             <ul>
                 {products.map((product, i) => {
-                  return  <Fragment> 
-                  <li
-                        key={i}
-                        className="list-group-item"
-                        style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                        }}
-                    >
-                        <span style={{ flex: 1 }}>{product.name}</span>
-
-                        <Link to={`/admin/product/update/${product._id}`}>
-                            <button
-                                className="btn btn-warning btn-sm mx-2"
-                            // onClick={() => onUpdate(product)}
-                            >
-                                Update
-                            </button>
-                        </Link>
-
-                        <button
-                            className="btn btn-danger btn-sm"
-                            onClick={() => removeProduct(product._id)}
+                    return <Fragment>
+                        <li
+                            key={i}
+                            className="list-group-item"
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                            }}
                         >
-                            Delete
-                        </button>
-                    </li>
-                <hr />
-                </Fragment>
+                            <span style={{ flex: 1 }}>{product.name}</span>
+
+                            <ShowImage
+                                item={product}
+                                url="product"
+                                from="list"
+                            />
+
+                            <Link to={`/admin/product/update/${product._id}`}>
+                                <button
+                                    className="btn btn-warning btn-sm mx-2"
+                                // onClick={() => onUpdate(product)}
+                                >
+                                    Update
+                                </button>
+                            </Link>
+
+                            <button
+                                className="btn btn-danger btn-sm"
+                                onClick={() => removeProduct(product._id)}
+                            >
+                                Delete
+                            </button>
+                        </li>
+                        <hr />
+                    </Fragment>
                 })}
             </ul>
 
