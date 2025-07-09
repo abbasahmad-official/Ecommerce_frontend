@@ -59,11 +59,13 @@ const Menu = () => {
             <Fragment>
               <li className="mt-2"><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
               <li className="mt-2"><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
+              <li className="mt-2"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
             </Fragment>
           )}
 
           {isAuthenticated() && (
-            <li className="mt-2">
+           <Fragment>
+           <li className="mt-2">
               <span
                 className="nav-link"
                 style={{ cursor: "pointer", color: "#ffffff" }}
@@ -77,6 +79,8 @@ const Menu = () => {
                 Signout
               </span>
             </li>
+            <li className="mt-2"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
+            </Fragment>
           )}
         </ul>
       </div>
