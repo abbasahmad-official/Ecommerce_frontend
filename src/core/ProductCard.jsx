@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem } from "./cartHelpers";
+import "/App.css"
 
 const ProductCard = ({ product }) => {
 
@@ -22,7 +23,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+   <div className="card h-100 border-0 rounded-4 overflow-hidden product-hover-effect">
       {shouldRedirect(redirect)}
      <Link to={`/product/${product._id}`}> <ShowImage item={product} url="product" /> </Link>
       <div className="card-body d-flex flex-column justify-content-between">
