@@ -1,0 +1,6 @@
+/* Apply shadow only on screens smaller than 768px (Bootstrap's md) */
+@media (max-width: 767.98px) {
+  .responsive-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}

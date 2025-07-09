@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { addItem } from "./cartHelpers";
-
+import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
 
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="card h-100 border-0 rounded-4 overflow-hidden product-hover-effect">
+   <div className="card h-100 border-0 rounded-4 overflow-hidden product-hover-effect responsive-shadow">
       {shouldRedirect(redirect)}
       <div className="text-center my-2">
         <Link to={`/product/${product._id}`}>
