@@ -59,16 +59,16 @@ const Search = () => {
     return <p>No products found.</p>;
   }
 
-  return (
-    <div className="row">
-      {results.map((product, index) => (
-        <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
-          <ProductCard product={product} />
-          {searchedProducts()}
-        </div>
-      ))}
-    </div>
-  );
+return (
+  <div className="row">
+    {results.map((product, index) => (
+      <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
+        <ProductCard product={product} />
+      </div>
+    ))}
+  </div>
+);
+
 };
 
     const searchForm = () => {
@@ -105,7 +105,7 @@ const Search = () => {
         <div className="row">
             <div className="container mb-3">{searchForm()}</div>
             <div className="container-fluid mb-3">
-                {searched && results.length > 0 ? searchedProducts(results) : null}
+                {searched  ? searchedProducts() : null}
             </div>
         </div>
     );
