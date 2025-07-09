@@ -60,7 +60,7 @@ const Cart = () => {
               {items.length > 0 ? (
                 items.map((item) => (
                   <tr key={item._id}>
-                    <td><ShowImage item={item} url="product" /></td>
+                    <td> <div width="20px" ><ShowImage item={item} url="product" /> </div></td>
                     <td>{item.name}</td>
                     <td>Rs {item.price}</td>
                     <td>
