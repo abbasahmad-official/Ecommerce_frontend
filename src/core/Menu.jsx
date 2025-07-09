@@ -32,71 +32,80 @@ const Menu = () => {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary px-3">
-      <Link className="navbar-brand" to="/">MyShop</Link>
+      <div className="container-fluid">
+        {/* Brand */}
+        <Link className="navbar-brand" to="/">MyShop</Link>
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        {/* Hamburger toggle */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ms-auto">
-          <li className="nav-item">
-            <Link className="nav-link" style={isActive("/")} to="/">Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" style={isActive("/shop")} to="/shop">Shop</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" style={isActive("/cart")} to="/cart">
-              Cart <sup><small>{menuCount}</small></sup>
-            </Link>
-          </li>
-
-          {isAuthenticated() && isAuthenticated().user.role === 0 && (
+        {/* Collapsible menu */}
+        <div className="collapse navbar-collapse" id="mainNavbar">
+          {/* Centered nav links */}
+          <ul className="navbar-nav mx-auto text-center">
             <li className="nav-item">
-              <Link className="nav-link" style={isActive("/user/dashboard")} to="/user/dashboard">Dashboard</Link>
+              <Link className="nav-link" style={isActive("/")} to="/">Home</Link>
             </li>
-          )}
-
-          {isAuthenticated() && isAuthenticated().user.role === 1 && (
             <li className="nav-item">
-              <Link className="nav-link" style={isActive("/admin/dashboard")} to="/admin/dashboard">Dashboard</Link>
+              <Link className="nav-link" style={isActive("/shop")} to="/shop">Shop</Link>
             </li>
-          )}
+            <li className="nav-item">
+              <Link className="nav-link" style={isActive("/cart")} to="/cart">
+                Cart <sup><small>{menuCount}</small></sup>
+              </Link>
+            </li>
 
-          {!isAuthenticated() && (
-            <Fragment>
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
               <li className="nav-item">
-                <Link className="nav-link" style={isActive("/signin")} to="/signin">Signin</Link>
+                <Link className="nav-link" style={isActive("/user/dashboard")} to="/user/dashboard">Dashboard</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" style={isActive("/signup")} to="/signup">Signup</Link>
-              </li>
-            </Fragment>
-          )}
+            )}
 
-          {isAuthenticated() && (
-            <li className="nav-item">
-              <span
-                className="nav-link"
-                style={{ cursor: "pointer", color: "#ffffff" }}
-                onClick={() => {
-                  signout(() => navigate("/"));
-                }}
-              >
-                Signout
-              </span>
-            </li>
-          )}
-        </ul>
+            {isAuthenticated() && isAuthenticated().user.role === 1 && (
+              <li className="nav-item">
+                <Link className="nav-link" style={isActive("/admin/dashboard")} to="/admin/dashboard">Dashboard</Link>
+              </li>
+            )}
+          </ul>
+
+          {/* Right-side auth links */}
+          <ul className="navbar-nav ms-auto text-center">
+            {!isAuthenticated() && (
+              <Fragment>
+                <li className="nav-item">
+                  <Link className="nav-link" style={isActive("/signin")} to="/signin">Signin</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" style={isActive("/signup")} to="/signup">Signup</Link>
+                </li>
+              </Fragment>
+            )}
+
+            {isAuthenticated() && (
+              <li className="nav-item">
+                <span
+                  className="nav-link"
+                  style={{ cursor: "pointer", color: "#ffffff" }}
+                  onClick={() => {
+                    signout(() => navigate("/"));
+                  }}
+                >
+                  Signout
+                </span>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </nav>
   );
