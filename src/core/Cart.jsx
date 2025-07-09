@@ -4,6 +4,7 @@ import { updateItem, removeItem } from "./cartHelpers";
 import Checkout from "./Checkout";
 import { useSelector, useDispatch } from 'react-redux';
 import { setCartMenuValue } from '../redux/slices/cartSlice';
+import ShowImage from "./ShowImage";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const Cart = () => {
           <table className="table table-bordered">
             <thead className="thead-dark">
               <tr>
+                <th>Pic</th>
                 <th>Product</th>
                 <th>Price</th>
                 <th style={{ width: "100px" }}>Quantity</th>
@@ -58,6 +60,7 @@ const Cart = () => {
               {items.length > 0 ? (
                 items.map((item) => (
                   <tr key={item._id}>
+                    <td><ShowImage item={item} url="product" /></td>
                     <td>{item.name}</td>
                     <td>Rs {item.price}</td>
                     <td>
