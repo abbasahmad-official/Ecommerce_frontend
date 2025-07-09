@@ -66,7 +66,8 @@ const Shop = () => {
 
   const loadMoreButton = () => {
     return (
-      size > 0 && size >= limit  && (
+      size > 0 &&
+      size >= limit && (
         <div className="text-center mt-3 mb-5">
           <button onClick={loadMore} className="btn btn-outline-primary">
             Load More
@@ -96,43 +97,47 @@ const Shop = () => {
 
   return (
     <Layout title="Shop" description="Find your desired products">
-      <div className="row">
-        <div className="col-4">
-          <h4>Filter by Categories</h4>
-          <ul>
-            <CheckBox
-              categories={categories}
-              handleFilters={(filters) => handleFilters(filters, "category")}
-            />
-          </ul>
+      <div className="container">
+        <div className="row">
+          {/* Filter Section */}
+          <div className="col-12 col-md-4 mb-3">
+            <h4>Filter by Categories</h4>
+            <ul>
+              <CheckBox
+                categories={categories}
+                handleFilters={(filters) => handleFilters(filters, "category")}
+              />
+            </ul>
 
-          <h4>Filter by Price</h4>
-          <ul>
-            <RadioBox
-              prices={prices}
-              handleFilters={(filters) => handleFilters(filters, "price")}
-            />
-          </ul>
-        </div>
-
-        <div className="col-8">
-          <div className="mb-3">
-            {products.length > 0 ? (
-              <h6>{products.length} product(s) found</h6>
-            ) : (
-              <h6>No products found</h6>
-            )}
+            <h4>Filter by Price</h4>
+            <ul>
+              <RadioBox
+                prices={prices}
+                handleFilters={(filters) => handleFilters(filters, "price")}
+              />
+            </ul>
           </div>
 
-          <div className="row">
-            {products.map((product, i) => (
-              <div key={i} className="col-4 mb-3">
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
+          {/* Products Section */}
+          <div className="col-12 col-md-8">
+            <div className="mb-3">
+              {products.length > 0 ? (
+                <h6>{products.length} product(s) found</h6>
+              ) : (
+                <h6>No products found</h6>
+              )}
+            </div>
 
-          {loadMoreButton()}
+            <div className="row">
+              {products.map((product, i) => (
+                <div key={i} className="col-12 col-sm-6 col-md-4 mb-3">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+
+            {loadMoreButton()}
+          </div>
         </div>
       </div>
     </Layout>
