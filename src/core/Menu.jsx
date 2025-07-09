@@ -52,7 +52,7 @@ const Menu = () => {
           )}
 
           {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li><Link className="nav-link mt-2 mb-2" style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li><Link className="nav-link mt-2 " style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {!isAuthenticated() && (
@@ -63,7 +63,7 @@ const Menu = () => {
           )}
 
           {isAuthenticated() && (
-            <li>
+            <li className="mt-2">
               <span
                 className="nav-link"
                 style={{ cursor: "pointer", color: "#ffffff" }}
