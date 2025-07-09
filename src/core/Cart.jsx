@@ -39,7 +39,7 @@ const Cart = () => {
     items.reduce((acc, item) => acc + item.count * item.price, 0).toFixed(2);
 
   return (
-    <Layout>
+    <Layout title="Cart" description={undefined}>
       <div className="container py-4">
         <h3 className="mb-4">You have {items.length} items in cart</h3>
 
