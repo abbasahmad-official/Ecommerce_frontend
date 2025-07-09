@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
       {shouldRedirect(redirect)}
-      <ShowImage item={product} url="product" />
+     <Link to={`/product/${product._id}`}> <ShowImage item={product} url="product" /> </Link>
       <div className="card-body d-flex flex-column justify-content-between">
         <div>
           <h5 className="card-title text-dark">{product.name}</h5>
