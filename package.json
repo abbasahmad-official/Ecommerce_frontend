@@ -13,6 +13,7 @@
     "@babel/runtime": "^7.27.6",
     "@reduxjs/toolkit": "^2.8.2",
     "@stripe/stripe-js": "^7.4.0",
+    "bootstrap": "^5.3.7",
     "braintree-web": "^3.123.1",
     "braintree-web-drop-in-react": "^1.2.1",
     "dotenv": "^17.0.0",
