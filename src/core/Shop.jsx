@@ -13,12 +13,8 @@ const Shop = () => {
   const [skip, setSkip] = useState(0);
   const [products, setProducts] = useState([]);
   const [size, setSize] = useState(0);
+  const [myFilters, setMyFilters] = useState({ filters: { category: [], price: [] } });
 
-  const [myFilters, setMyFilters] = useState({
-    filters: { category: [], price: [] },
-  });
-
-  // Fetch categories on mount
   useEffect(() => {
     init();
     loadFilteredResults(0, limit, myFilters.filters);
@@ -26,11 +22,8 @@ const Shop = () => {
 
   const init = () => {
     getCategories().then((data) => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setCategories(data);
-      }
+      if (data.error) setError(data.error);
+      else setCategories(data);
     });
   };
 
@@ -51,17 +44,33 @@ const Shop = () => {
 
   const loadMore = () => {
     const toSkip = skip + limit;
-
     getFilteredProducts(toSkip, limit, myFilters.filters).then((data) => {
-      if (data.error) {
-        setError(data.error);
-      } else {
+      if (!data.error) {
         setProducts([...products, ...(data.data || [])]);
         setSize(data.size || 0);
         setSkip(toSkip);
-        setError(false);
+      } else {
+        setError(data.error);
       }
     });
+  };
+
+  const handleFilters = (filters, filterBy) => {
+    const newFilters = { ...myFilters };
+    if (filterBy === "price") {
+      const priceRange = handlePrice(filters);
+      newFilters.filters[filterBy] = priceRange;
+    } else {
+      newFilters.filters[filterBy] = filters;
+    }
+
+    setMyFilters(newFilters);
+    loadFilteredResults(0, limit, newFilters.filters);
+  };
+
+  const handlePrice = (value) => {
+    const priceObj = prices.find((p) => p._id === value);
+    return priceObj ? priceObj.array : [];
   };
 
   const loadMoreButton = () => {
@@ -77,30 +86,22 @@ const Shop = () => {
     );
   };
 
-  const handleFilters = (filters, filterBy) => {
-    const newFilters = { ...myFilters };
-    newFilters.filters[filterBy] = filters;
-
-    if (filterBy === "price") {
-      const priceRange = handlePrice(filters);
-      newFilters.filters[filterBy] = priceRange;
-    }
-
-    setMyFilters(newFilters);
-    loadFilteredResults(0, limit, newFilters.filters); // Reset skip to 0 on new filter
-  };
-
-  const handlePrice = (value) => {
-    const priceObj = prices.find((p) => p._id === value);
-    return priceObj ? priceObj.array : [];
-  };
-
   return (
     <Layout title="Shop" description="Find your desired products">
       <div className="container">
+        <div className="d-md-none text-end my-3">
+          <button
+            className="btn btn-outline-primary"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#filterSidebar"
+          >
+            Filters
+          </button>
+        </div>
+
         <div className="row">
-          {/* Filter Section */}
-          <div className="col-12 col-md-4 mb-3">
+          {/* Sidebar for large screens */}
+          <div className="col-md-4 d-none d-md-block">
             <h4>Filter by Categories</h4>
             <ul>
               <CheckBox
@@ -118,8 +119,8 @@ const Shop = () => {
             </ul>
           </div>
 
-          {/* Products Section */}
-          <div className="col-12 col-md-8">
+          {/* Product section */}
+          <div className="col-md-8">
             <div className="mb-3">
               {products.length > 0 ? (
                 <h6>{products.length} product(s) found</h6>
@@ -138,6 +139,37 @@ const Shop = () => {
 
             {loadMoreButton()}
           </div>
+        </div>
+      </div>
+
+      {/* Bootstrap Offcanvas for mobile filters */}
+      <div
+        className="offcanvas offcanvas-start"
+        tabIndex="-1"
+        id="filterSidebar"
+        aria-labelledby="filterSidebarLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="filterSidebarLabel">Filters</h5>
+          <button
+            type="button"
+            className="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="offcanvas-body">
+          <h5>Categories</h5>
+          <CheckBox
+            categories={categories}
+            handleFilters={(filters) => handleFilters(filters, "category")}
+          />
+
+          <h5 className="mt-4">Price</h5>
+          <RadioBox
+            prices={prices}
+            handleFilters={(filters) => handleFilters(filters, "price")}
+          />
         </div>
       </div>
     </Layout>
