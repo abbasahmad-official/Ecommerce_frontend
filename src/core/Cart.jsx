@@ -47,7 +47,7 @@ const Cart = () => {
         <div className="d-none d-md-block">
           <table className="table table-bordered">
             <thead className="thead-dark">
-              <tr>
+              <tr className="align-middle text-center">
                 <th>Pic</th>
                 <th>Product</th>
                 <th>Price</th>
