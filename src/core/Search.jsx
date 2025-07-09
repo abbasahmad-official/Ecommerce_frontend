@@ -54,7 +54,7 @@ const Search = () => {
         setData({ ...data, [name]: event.target.value, searched: false });
     };
 
-    const searchedProducts = (results = []) => {
+    const searchedProducts = () => {
   if (results.length === 0) {
     return <p>No products found.</p>;
   }
@@ -64,6 +64,7 @@ const Search = () => {
       {results.map((product, index) => (
         <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
           <ProductCard product={product} />
+          {searchedProducts()}
         </div>
       ))}
     </div>
