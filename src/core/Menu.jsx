@@ -52,14 +52,14 @@ const Menu = () => {
           )}
 
           {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li><Link className="nav-link mt-2 " style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li ><Link className="nav-link mt-2 " style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {!isAuthenticated() && (
             <Fragment>
               <li className="mt-2"><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
               <li className="mt-2"><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
-              <li className="mt-2"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
+              <li className="mt-2 close"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
             </Fragment>
           )}
 
@@ -79,7 +79,7 @@ const Menu = () => {
                 Signout
               </span>
             </li>
-            <li className="mt-2"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
+            <li className="mt-2 close"><span className="close-btn" onClick={closeSidebar}>&times;</span></li>
             </Fragment>
           )}
         </ul>
