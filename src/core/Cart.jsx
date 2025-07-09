@@ -59,14 +59,17 @@ const Cart = () => {
             <tbody>
               {items.length > 0 ? (
                 items.map((item) => (
-                  <tr key={item._id}>
-                    <td><ShowImage item={item} url="product" from="cart" /></td>
+                  <tr key={item._id} className="align-middle text-center">
+                    <td>
+                      <ShowImage item={item} url="product" from="cart" />
+                    </td>
                     <td>{item.name}</td>
                     <td>Rs {item.price}</td>
                     <td>
                       <input
                         type="number"
-                        className="form-control"
+                        className="form-control mx-auto"
+                        style={{ width: "70px" }}
                         value={item.count > 0 ? item.count : 1}
                         min="1"
                         onChange={handleChange(item._id)}
@@ -82,6 +85,7 @@ const Cart = () => {
                       </button>
                     </td>
                   </tr>
+
                 ))
               ) : (
                 <tr>
@@ -101,29 +105,42 @@ const Cart = () => {
           ) : (
             items.map((item) => (
               <div key={item._id} className="card mb-3">
-                <div className="card-body">
-                  <h5 className="card-title">{item.name}</h5>
-                  <p className="card-text mb-1">Price: Rs {item.price}</p>
-                  <div className="d-flex align-items-center mb-2">
-                    <label className="me-2 mb-0">Qty:</label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      value={item.count > 0 ? item.count : 1}
-                      min="1"
-                      onChange={handleChange(item._id)}
-                      style={{ width: "70px" }}
+                <div className="d-flex justify-content-between align-items-center">
+                  {/* Left side: Card body */}
+                  <div className="card-body">
+                    <h5 className="card-title">{item.name}</h5>
+                    <p className="card-text mb-1">Price: Rs {item.price}</p>
+                    <div className="d-flex align-items-center mb-2">
+                      <label className="me-2 mb-0">Qty:</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        value={item.count > 0 ? item.count : 1}
+                        min="1"
+                        onChange={handleChange(item._id)}
+                        style={{ width: "70px" }}
+                      />
+                    </div>
+                    <p>Total: Rs {(item.count * item.price).toFixed(2)}</p>
+                    <button
+                      className="btn btn-sm btn-danger"
+                      onClick={() => removeItems(item._id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+
+                  {/* Right side: Image */}
+                  <div className="pe-3">
+                    <ShowImage
+                      item={item}
+                      url="product"
+                      from="card"
                     />
                   </div>
-                  <p>Total: Rs {(item.count * item.price).toFixed(2)}</p>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => removeItems(item._id)}
-                  >
-                    Remove
-                  </button>
                 </div>
               </div>
+
             ))
           )}
         </div>
