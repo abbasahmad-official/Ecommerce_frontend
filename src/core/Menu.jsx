@@ -43,16 +43,16 @@ const Menu = () => {
       <div className={`sidebar-overlay ${isSidebarOpen ? "open" : ""}`} onClick={closeSidebar}></div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <ul className="list-unstyled p-3">
-          <li><Link className="nav-link mb-2 mt-3" style={isActive("/")} to="/" onClick={closeSidebar}>Home</Link></li>
+          <li><Link className="nav-link mb-2 mt-5" style={isActive("/")} to="/" onClick={closeSidebar}>Home</Link></li>
           <li><Link className="nav-link mt-2" style={isActive("/shop")} to="/shop" onClick={closeSidebar}>Shop</Link></li>
           <li><Link className="nav-link mt-2" style={isActive("/cart")} to="/cart" onClick={closeSidebar}>Cart <sup><small>{menuCount}</small></sup></Link></li>
 
           {isAuthenticated() && isAuthenticated().user.role === 0 && (
-            <li><Link className="nav-link" style={isActive("/user/dashboard")} to="/user/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li><Link className="nav-link mt-2" style={isActive("/user/dashboard")} to="/user/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li><Link className="nav-link" style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li><Link className="nav-link mt-2" style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {!isAuthenticated() && (
