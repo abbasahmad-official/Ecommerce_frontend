@@ -17,9 +17,9 @@ const Layout = ({
     dispatch(setCartMenuValue(count));
   }, []);
     return(
-    <div >
+    <div style={{paddingTop: "20px"}}>
         <div className="container-fluid py-5 p-5 mb-4 bg-light rounded-3">
-            <h2 className="display-5 fw-bold mt-3">{title}</h2>
+            <h2 className="display-5 fw-bold">{title}</h2>
             <p className="col-md-8 fs-4">{description}</p>
         </div>
         <div className={className}>{children}</div>
