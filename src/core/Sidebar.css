@@ -47,7 +47,8 @@
   border-radius: 2px;
 }
 
-.mobile-navlink.nav-link{
-    font-weight: bold;
-    font-size:medium;
+.mobile-navlink{
+    font-weight: bold !important;
+    font-size:medium !important;
+    color: white !important;
 }

@@ -65,9 +65,9 @@ const Menu = () => {
 
           {isAuthenticated() && (
            <Fragment>
-           <li className="mt-2 mobile-navlink">
+           <li className="mt-2 ">
               <span
-                className="nav-link"
+                className="nav-link mobile-navlink"
                 style={{ cursor: "pointer", color: "#ffffff" }}
                 onClick={() => {
                   signout(() => {
