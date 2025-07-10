@@ -43,22 +43,22 @@ const Menu = () => {
       <div className={`sidebar-overlay ${isSidebarOpen ? "open" : ""}`} onClick={closeSidebar}></div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <ul className="list-unstyled p-3">
-          <li><Link className="nav-link mb-2 mt-5" style={isActive("/")} to="/" onClick={closeSidebar}>Home</Link></li>
-          <li><Link className="nav-link mt-2" style={isActive("/shop")} to="/shop" onClick={closeSidebar}>Shop</Link></li>
-          <li><Link className="nav-link mt-2" style={isActive("/cart")} to="/cart" onClick={closeSidebar}>Cart <sup><small>{menuCount}</small></sup></Link></li>
+          <li><Link className="nav-link mb-2 mt-5 mobile-navlink" style={isActive("/")} to="/" onClick={closeSidebar}>Home</Link></li>
+          <li><Link className="nav-link mt-2 mobile-navlink" style={isActive("/shop")} to="/shop" onClick={closeSidebar}>Shop</Link></li>
+          <li><Link className="nav-link mt-2 mobile-navlink" style={isActive("/cart")} to="/cart" onClick={closeSidebar}>Cart <sup><small>{menuCount}</small></sup></Link></li>
 
           {isAuthenticated() && isAuthenticated().user.role === 0 && (
-            <li><Link className="nav-link mt-2" style={isActive("/user/dashboard")} to="/user/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li><Link className="nav-link mt-2 mobile-navlink" style={isActive("/user/dashboard")} to="/user/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li ><Link className="nav-link mt-2 " style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
+            <li ><Link className="nav-link mt-2 mobile-navlink " style={isActive("/admin/dashboard")} to="/admin/dashboard" onClick={closeSidebar}>Dashboard</Link></li>
           )}
 
           {!isAuthenticated() && (
             <Fragment>
-              <li className="mt-2"><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
-              <li className="mt-2"><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
+              <li className="mt-2 mobile-navlink"><Link className="nav-link" style={isActive("/signin")} to="/signin" onClick={closeSidebar}>Signin</Link></li>
+              <li className="mt-2 mobile-navlink"><Link className="nav-link" style={isActive("/signup")} to="/signup" onClick={closeSidebar}>Signup</Link></li>
               
             </Fragment>
           )}
