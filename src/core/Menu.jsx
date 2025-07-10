@@ -86,7 +86,7 @@ const Menu = () => {
       </div>
 
       {/* Standard Bootstrap navbar for large screens */}
-      <nav className="navbar navbar-expand-md navbar-dark bg-primary px-3 d-none d-md-flex">
+      <nav className="navbar navbar-expand-md navbar-dark bg-primary px-3 d-none d-md-flex fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">MyShop</Link>
           <ul className="navbar-nav mx-auto">
