@@ -30,7 +30,7 @@ const Menu = () => {
   return (
     <>
       {/* Top bar with brand and hamburger (small screen only) */}
-      <div className="bg-primary px-3 py-2 d-flex justify-content-between align-items-center d-md-none">
+      <div className="bg-primary px-3 py-2 d-flex justify-content-between align-items-center d-md-none fixed-top">
         <Link className="text-white text-decoration-none fs-4 fw-bold" to="/">MyShop</Link>
         <div className="hamburger" onClick={toggleSidebar}>
           <span></span>
