@@ -65,7 +65,7 @@ const Menu = () => {
 
           {isAuthenticated() && (
            <Fragment>
-           <li className="mt-2">
+           <li className="mt-2 mobile-navlink">
               <span
                 className="nav-link"
                 style={{ cursor: "pointer", color: "#ffffff" }}
